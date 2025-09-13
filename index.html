@@ -1,23 +1,68 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>スプラッシュ画面付きWebアプリ</title>
-  <link rel="stylesheet" href="style.css">
+  <title>スプラッシュ付きWebアプリ</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #splash-logo {
+      width: 150px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #main-content {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #main-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- スプラッシュ画面 -->
   <div id="splash">
-    <img src="https://uploads.scratch.mit.edu/get_image/project/1153907737_800x800.png" alt="ロゴ" id="splash-logo">
+    <img src="logo.png" alt="ロゴ" id="splash-logo">
   </div>
 
-  <!-- メインコンテンツ -->
   <div id="main-content" class="hidden">
-    <h1>ようこそ！</h1>
-    <p>これはメインコンテンツです。</p>
+    <iframe src="splatoon2.html"></iframe>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      }, 2000);
+    });
+  </script>
+
 </body>
 </html>
